@@ -1,0 +1,152 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Store Product Locator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <h1>📍 Store Product Locator</h1>
+    <p>Find products, aisles, shelves and stock availability.</p>
+  </header>
+
+  <main class="container">
+    <section class="search-panel">
+      <h2>Find a Product</h2>
+
+      <div class="search-row">
+        <input id="searchInput" type="search"
+          placeholder="Search product name or ID...">
+
+        <select id="categoryFilter" aria-label="Filter category">
+          <option value="All">All Categories</option>
+          <option value="Grocery">Grocery</option>
+          <option value="Electronics">Electronics</option>
+          <option value="Household">Household</option>
+          <option value="Personal Care">Personal Care</option>
+        </select>
+      </div>
+    </section>
+
+    <section class="stats">
+      <div class="stat">
+        <span>Total Products</span>
+        <strong id="totalProducts">0</strong>
+      </div>
+      <div class="stat">
+        <span>In Stock</span>
+        <strong id="inStock">0</strong>
+      </div>
+      <div class="stat">
+        <span>Out of Stock</span>
+        <strong id="outStock">0</strong>
+      </div>
+    </section>
+
+    <section class="content-grid">
+      <div class="panel">
+        <div class="panel-heading">
+          <h2>Product Directory</h2>
+          <span id="resultCount">0 products</span>
+        </div>
+        <div id="productList" class="product-list"></div>
+        <p id="emptyMessage" class="empty" hidden>
+          No matching products found.
+        </p>
+      </div>
+
+      <div class="panel location-panel">
+        <h2>Product Location</h2>
+        <div id="locationDetails" class="location-details">
+          <div class="location-icon">📦</div>
+          <p>Select a product to see its location.</p>
+        </div>
+
+        <div class="store-map">
+          <h3>Store Aisles</h3>
+          <div class="aisle-grid">
+            <button class="aisle" data-aisle="A1">
+              <strong>A1</strong><span>Grocery</span>
+            </button>
+            <button class="aisle" data-aisle="A2">
+              <strong>A2</strong><span>Electronics</span>
+            </button>
+            <button class="aisle" data-aisle="A3">
+              <strong>A3</strong><span>Household</span>
+            </button>
+            <button class="aisle" data-aisle="A4">
+              <strong>A4</strong><span>Personal Care</span>
+            </button>
+          </div>
+          <p id="mapMessage">Select a product to highlight its aisle.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="panel add-panel">
+      <h2>Add or Update Product</h2>
+
+      <form id="productForm">
+        <div class="form-grid">
+          <label>Product ID
+            <input id="productId" required maxlength="20"
+              placeholder="e.g. P101">
+          </label>
+
+          <label>Product Name
+            <input id="productName" required maxlength="100"
+              placeholder="e.g. Rice Bag">
+          </label>
+
+          <label>Category
+            <select id="productCategory" required>
+              <option value="Grocery">Grocery</option>
+              <option value="Electronics">Electronics</option>
+              <option value="Household">Household</option>
+              <option value="Personal Care">Personal Care</option>
+            </select>
+          </label>
+
+          <label>Price (₹)
+            <input id="productPrice" type="number"
+              min="0" step="0.01" required>
+          </label>
+
+          <label>Quantity
+            <input id="productQuantity" type="number"
+              min="0" step="1" required>
+          </label>
+
+          <label>Aisle
+            <select id="productAisle" required>
+              <option value="A1">A1</option>
+              <option value="A2">A2</option>
+              <option value="A3">A3</option>
+              <option value="A4">A4</option>
+            </select>
+          </label>
+
+          <label>Shelf
+            <select id="productShelf" required>
+              <option value="S1">S1</option>
+              <option value="S2">S2</option>
+              <option value="S3">S3</option>
+              <option value="S4">S4</option>
+            </select>
+          </label>
+        </div>
+
+        <button class="primary" type="submit">Save Product</button>
+        <button class="secondary" type="reset">Clear Form</button>
+      </form>
+      <p id="formMessage" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer>Store Product Locator · Demo Project</footer>
+  <script src="script.js"></script>
+</body>
+</html>
